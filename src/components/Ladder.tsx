@@ -1,16 +1,14 @@
 import React from 'react'
 
-// type LadderType = {
-//   id: number
-//   name: string
-//   description: string
-//   steps: LadderType[]
-//  icon: React.ReactNode
-// }
+type LadderType = {
+  id: number
+  name: string
+  description: string
+  steps: LadderType[]
+  icon: React.ReactNode
+}
 
-// const Step = ({ id, name, description }: Omit<LadderType, 'steps'>) => {
-
-const Step = ({ id, name, description, icon }) => {
+const Step = ({ id, name, description, icon }: Omit<LadderType, 'steps'>) => {
   return (
     <div
       className="relative flex flex-col items-start py-4 pl-8 
@@ -54,7 +52,7 @@ const Step = ({ id, name, description, icon }) => {
   )
 }
 
-const Ladder = ({ id, name, description, steps, icon }) => {
+const Ladder = ({ id, name, description, steps, icon }: LadderType) => {
   return (
     <div
       className="[:first-of-type&>div>div>div.top-divider]:hidden
@@ -71,7 +69,7 @@ const Ladder = ({ id, name, description, steps, icon }) => {
   )
 }
 
-const LadderGroup = ({ steps }) => {
+const LadderGroup = ({ steps }: Pick<LadderType, 'steps'>) => {
   return (
     <div className="">
       {steps.map(step => (
